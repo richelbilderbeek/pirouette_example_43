@@ -1,3 +1,5 @@
+# Use 10x shorter MCMC chain length (from 10M to 1M), sample 1k times
+# 
 library(pirouette)
 library(beautier)
 library(beastier)
@@ -52,8 +54,8 @@ expect_equal(length(pir_paramses), n_phylogenies)
 # Change MCMC chain length
 for (i in seq_along(pir_paramses)) {
   for (j in seq_along(pir_paramses[[i]]$experiments)) {
-    pir_paramses[[i]]$experiments[[j]]$inference_model$mcmc$chain_length <- 1e7
-    pir_paramses[[i]]$experiments[[j]]$inference_model$mcmc$store_every <- 1e4
+    pir_paramses[[i]]$experiments[[j]]$inference_model$mcmc$chain_length <- 1e6
+    pir_paramses[[i]]$experiments[[j]]$inference_model$mcmc$store_every <- 1e3
   }
 }
 if (is_testing) {
